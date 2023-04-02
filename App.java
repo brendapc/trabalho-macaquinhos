@@ -1,4 +1,3 @@
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -19,7 +18,7 @@ import java.util.Scanner;
  * DO
  */
 
-class App {
+public class App {
     public static void main(String args[]) throws FileNotFoundException {
         ArrayList<Macaco> listaMacacos = new ArrayList<Macaco>();
         String FILE_PATH = "arquivoTeste.txt";
@@ -37,25 +36,33 @@ class App {
 
                 for (int i = 11; i < testeResult.length; i++) {
                     listaCocosMacaco.add(Integer.parseInt(testeResult[i]));
-                    // System.out.println("listaCocosMacaco: " + listaCocosMacaco.toString());
                 }
                 Macaco macacoTeste = new Macaco(Integer.parseInt(testeResult[4]), Integer.parseInt(testeResult[7]),
                         listaCocosMacaco);
                 listaMacacos.add(macacoTeste);
-                /*
-                 * listaMacacos.add(new Macaco(Integer.parseInt(testeResult[4]),
-                 * Integer.parseInt(testeResult[7]),
-                 * listaCocosMacaco));
-                 */
-            }
-
-            for (int i = 0; i < rodadas; i++) {
-                for (int j = 0; j < listaMacacos.size(); j++) {
-                    listaMacacos.get(j).arremessaCoco(listaMacacos);
-                }
-            }
-            System.out.println("listaMacacos: " + listaMacacos.get(38).cocos.toString());
+            } 
+            gerenciadorDeRodadas(rodadas, listaMacacos); 
+            Macaco ganhador = macacoGanhador(listaMacacos);
+            //System.out.println("Mamaco ganhador" + ganhador);
+            System.out.println("oi");
         }
+    }
+    
+    private static void gerenciadorDeRodadas(int rodadas, ArrayList<Macaco> listaMacacos) {
+        for (int i = 0; i < rodadas; i++) {
+            for (int j = 0; j < listaMacacos.size(); j++) {
+                listaMacacos.get(j).arremessaCoco(listaMacacos);
+            }
+        }
+    }
 
+    private static Macaco macacoGanhador(ArrayList<Macaco> listaMacacos) {
+        Macaco aux = listaMacacos.get(0);
+        for (int i = 0; i < listaMacacos.size(); i++) {
+            if(listaMacacos.get(i).cocos.size() > aux.cocos.size()) {
+                aux = listaMacacos.get(i);
+            }
+        }
+        return aux;
     }
 }
