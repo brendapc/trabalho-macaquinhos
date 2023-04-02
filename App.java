@@ -17,14 +17,24 @@ import javax.crypto.Mac;
 class App {
     public static void main(String args[]) {
         ArrayList<Integer> listaCocos = new ArrayList<Integer>(Arrays.asList(0, 1, 2));
-        Macaco teste = new Macaco(3, 4, listaCocos);
-        Macaco teste2 = new Macaco(0, 2, listaCocos);
-        Macaco teste3 = new Macaco(1, 2, listaCocos);
+        ArrayList<Integer> listaCocos2 = new ArrayList<Integer>(Arrays.asList(5,6,7, 1, 2));
+        ArrayList<Integer> listaCocos3 = new ArrayList<Integer>(Arrays.asList(9, 2, 4, 2));
+        
+        Macaco teste = new Macaco(2, 1, listaCocos);
+        Macaco teste2 = new Macaco(0, 2, listaCocos2);
+        Macaco teste3 = new Macaco(1, 0, listaCocos3);
+        
         ArrayList<Macaco> listaMacacos = new ArrayList<Macaco>(
                 Arrays.asList(teste, teste2, teste3));
 
         teste2.arremessaCoco(listaMacacos);
 
+        for (int i = 0; i < listaMacacos.size(); i++) {
+            listaMacacos.get(i).arremessaCoco(listaMacacos);
+        }
+
+        System.out.println(teste.cocos.toString());
         System.out.println(teste2.cocos.toString());
+        System.out.println(teste3.cocos.toString());
     }
 }

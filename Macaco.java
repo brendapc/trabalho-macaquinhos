@@ -24,16 +24,4 @@ public class Macaco {
     public void adicionaCoco(int coco) {
         cocos.add(coco);
     };
-
-    /*
-     * public String toString() {
-     * String cocosLista;
-     * for (int i = 0; i < cocos.size(); i++) {
-     * System.out.println(cocos.get(i));
-     * }
-     * return
-     * 
-     * };
-     */
-
 }
