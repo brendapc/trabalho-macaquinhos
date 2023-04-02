@@ -8,20 +8,22 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- * - Ler arquvio e armazenar numero de rodadas
+ * - Ler arquvio e armazenar numero de rodadas - OK
  * - Criar um array e inicializar uma classe de Macaco pra
- * cada macaquinho da lista do arquivo
+ * cada macaquinho da lista do arquivo - OK
  * - Enquanto não tiver acabado o numero de rodadas, passar por todo array
- * de macaquinhos executando uma função de jogar o próximo coco
+ * de macaquinhos executando uma função de jogar o próximo coco - OK
  * (dentro da função avaliar pra quem jogar de acordo com se o numero
- * de pedrinhas dentro do coco é impar ou par)
- * - Ao final das rodadas mostrar qual macaquinho tem mais cocos (ganhou)
+ * de pedrinhas dentro do coco é impar ou par) - OK
+ * - Ao final das rodadas mostrar qual macaquinho tem mais cocos (ganhou) - TO
+ * DO
  */
 
 class App {
     public static void main(String args[]) throws FileNotFoundException {
-        ArrayList<Integer> listaCocos = new ArrayList<Integer>(Arrays.asList(0, 1, 2,4,4,5,6,7,2,1));
-        ArrayList<Integer> listaCocos2 = new ArrayList<Integer>(Arrays.asList(5, 6, 7, 1, 2,2,3,4,3,1,1,1,2,4,4,5,6,8,9));
+        ArrayList<Integer> listaCocos = new ArrayList<Integer>(Arrays.asList(0, 1, 2, 4, 4, 5, 6, 7, 2, 1));
+        ArrayList<Integer> listaCocos2 = new ArrayList<Integer>(
+                Arrays.asList(5, 6, 7, 1, 2, 2, 3, 4, 3, 1, 1, 1, 2, 4, 4, 5, 6, 8, 9));
         ArrayList<Integer> listaCocos3 = new ArrayList<Integer>(Arrays.asList(9, 2, 4, 2));
 
         Macaco teste = new Macaco(2, 1, listaCocos);
@@ -37,12 +39,20 @@ class App {
 
             int rodadas = Integer.parseInt(sc.nextLine().replaceAll("\\D+", ""));
 
-            System.out.println(rodadas);
-            /*
-             * while (sc.nextLine() != null) {
-             * System.out.println(sc.nextLine());
-             * }
-             */
+            while (sc.hasNextLine()) {
+                String testeParse = sc.nextLine();
+                String[] testeResult = testeParse.split(" ");
+                ArrayList<Integer> listaCocosMacaco = new ArrayList<Integer>();
+
+                for (int i = 11; i < testeResult.length; i++) {
+                    listaCocosMacaco.add(Integer.parseInt(testeResult[i]));
+                }
+                listaMacacos.add(new Macaco(Integer.parseInt(testeResult[4]), Integer.parseInt(testeResult[7]),
+                        listaCocosMacaco));
+                // macacoAtacador par = testeResult[4]
+                // macacoAtacador impar = testeResult[7]
+                // for listacocos = testeResult[11>]
+            }
 
             for (int i = 0; i < rodadas; i++) {
                 for (int j = 0; j < listaMacacos.size(); j++) {
@@ -52,9 +62,5 @@ class App {
         }
 
         teste2.arremessaCoco(listaMacacos);
-
-        System.out.println(teste.cocos.toString());
-        System.out.println(teste2.cocos.toString());
-        System.out.println(teste3.cocos.toString());
     }
 }
