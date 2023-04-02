@@ -21,16 +21,7 @@ import java.util.Scanner;
 
 class App {
     public static void main(String args[]) throws FileNotFoundException {
-        ArrayList<Integer> listaCocos = new ArrayList<Integer>(Arrays.asList(0, 1, 2, 4, 4, 5, 6, 7, 2, 1));
-        ArrayList<Integer> listaCocos2 = new ArrayList<Integer>(
-                Arrays.asList(5, 6, 7, 1, 2, 2, 3, 4, 3, 1, 1, 1, 2, 4, 4, 5, 6, 8, 9));
-        ArrayList<Integer> listaCocos3 = new ArrayList<Integer>(Arrays.asList(9, 2, 4, 2));
-
-        Macaco teste = new Macaco(2, 1, listaCocos);
-        Macaco teste2 = new Macaco(0, 2, listaCocos2);
-        Macaco teste3 = new Macaco(1, 0, listaCocos3);
-        ArrayList<Macaco> listaMacacos = new ArrayList<Macaco>(
-                Arrays.asList(teste, teste2, teste3));
+        ArrayList<Macaco> listaMacacos = new ArrayList<Macaco>();
         String FILE_PATH = "arquivoTeste.txt";
 
         File file = new File(FILE_PATH);
@@ -46,12 +37,16 @@ class App {
 
                 for (int i = 11; i < testeResult.length; i++) {
                     listaCocosMacaco.add(Integer.parseInt(testeResult[i]));
+                    // System.out.println("listaCocosMacaco: " + listaCocosMacaco.toString());
                 }
-                listaMacacos.add(new Macaco(Integer.parseInt(testeResult[4]), Integer.parseInt(testeResult[7]),
-                        listaCocosMacaco));
-                // macacoAtacador par = testeResult[4]
-                // macacoAtacador impar = testeResult[7]
-                // for listacocos = testeResult[11>]
+                Macaco macacoTeste = new Macaco(Integer.parseInt(testeResult[4]), Integer.parseInt(testeResult[7]),
+                        listaCocosMacaco);
+                listaMacacos.add(macacoTeste);
+                /*
+                 * listaMacacos.add(new Macaco(Integer.parseInt(testeResult[4]),
+                 * Integer.parseInt(testeResult[7]),
+                 * listaCocosMacaco));
+                 */
             }
 
             for (int i = 0; i < rodadas; i++) {
@@ -59,8 +54,8 @@ class App {
                     listaMacacos.get(j).arremessaCoco(listaMacacos);
                 }
             }
+            System.out.println("listaMacacos: " + listaMacacos.get(38).cocos.toString());
         }
 
-        teste2.arremessaCoco(listaMacacos);
     }
 }
