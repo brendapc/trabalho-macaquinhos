@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class Macaco {
-    ArrayList<Integer> cocos = new ArrayList<Integer>(); // [22, 44, 55, 66]
-    int ataqueImpar;
-    int ataquePar;
+    public ArrayList<Integer> cocos = new ArrayList<Integer>(); // [22, 44, 55, 66]
+    private int ataqueImpar;
+    private int ataquePar;
 
     public Macaco(int ataqueImpar, int ataquePar, ArrayList<Integer> listaCocos) {
         this.ataqueImpar = ataqueImpar;
@@ -26,6 +26,5 @@ public class Macaco {
 
     public void adicionaCoco(int coco) {
         cocos.add(coco);
-
     };
 }
